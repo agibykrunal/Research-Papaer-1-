@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emergence of General Intelligence — Research Paper</title>
+<title>Research Paper</title>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -52,10 +51,10 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--text);background:var(--bg);display:grid;grid-template-columns:240px 1fr;grid-template-rows:48px 1fr;min-height:100vh;transition:background .2s,color .2s}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);display:grid;grid-template-columns:200px minmax(0,1fr) 210px;grid-template-rows:48px 1fr;min-height:100vh;transition:background .2s,color .2s}
 
-
-.topbar{grid-column:1/-1;grid-row:1;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100}
+/* TOPBAR */
+.topbar{grid-column:1/-1;grid-row:1;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100;transition:background .2s,border-color .2s}
 .tb-left{display:flex;align-items:center;gap:12px}
 .tb-logo{width:22px;height:22px;background:var(--text);border-radius:3px;display:flex;align-items:center;justify-content:center}
 .tb-logo span{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--bg);letter-spacing:-0.5px}
@@ -70,22 +69,53 @@ body{font-family:var(--sans);color:var(--text);background:var(--bg);display:grid
 [data-theme="dark"] .theme-toggle::after{transform:translateX(16px)}
 .tag-pill{font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);padding:2px 8px;border-radius:3px}
 
-
-.sidebar{grid-column:1;grid-row:2;background:var(--bg2);border-right:1px solid var(--border);padding:24px 0;position:sticky;top:48px;height:calc(100vh - 48px);overflow-y:auto;scrollbar-width:none}
+/* SIDEBAR */
+.sidebar{grid-column:1;grid-row:2;background:var(--bg2);border-right:1px solid var(--border);padding:20px 0;position:sticky;top:48px;height:calc(100vh - 48px);overflow-y:auto;scrollbar-width:none}
 .sidebar::-webkit-scrollbar{display:none}
-.sidebar-section{padding:0 16px;margin-bottom:8px}
-.sidebar-label{font-size:9.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text4);padding:8px 8px 6px;display:block}
-.toc-link{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:4px;text-decoration:none;cursor:pointer;transition:background .12s;border:none;background:none;width:100%;text-align:left}
+.sidebar-section{padding:0 12px;margin-bottom:6px}
+.sidebar-label{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text4);padding:6px 6px 8px;display:block}
+.toc-link{display:flex;align-items:center;gap:7px;padding:5px 6px;border-radius:4px;text-decoration:none;cursor:pointer;transition:background .12s;border:none;background:none;width:100%;text-align:left}
 .toc-link:hover{background:var(--bg3)}
 .toc-link.active{background:var(--accent-bg)}
 .toc-link.active .toc-num{color:var(--accent)}
 .toc-link.active .toc-name{color:var(--accent)}
-.toc-num{font-family:var(--mono);font-size:10px;color:var(--text4);min-width:20px;transition:color .12s}
-.toc-name{font-size:12px;color:var(--text3);line-height:1.35;transition:color .12s}
-.sidebar-divider{height:1px;background:var(--border);margin:12px 16px}
+.toc-num{font-family:var(--mono);font-size:9.5px;color:var(--text4);min-width:18px;transition:color .12s}
+.toc-name{font-size:11.5px;color:var(--text3);line-height:1.3;transition:color .12s}
+.sidebar-divider{height:1px;background:var(--border);margin:10px 12px}
 
+/* RIGHT PANEL */
+.right-panel{grid-column:3;grid-row:2;border-left:1px solid var(--border);padding:24px 0;position:sticky;top:48px;height:calc(100vh - 48px);overflow-y:auto;scrollbar-width:none;background:var(--bg2)}
+.right-panel::-webkit-scrollbar{display:none}
+.rp-section{padding:0 14px;margin-bottom:4px}
+.rp-label{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text4);padding:6px 2px 10px;display:block}
+.rp-divider{height:1px;background:var(--border);margin:14px 14px}
 
-.main{grid-column:2;grid-row:2;padding:0 64px 100px;max-width:860px}
+/* QUOTE CARD */
+.quote-card{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:12px 12px 10px;margin-bottom:8px;position:relative}
+.quote-card::before{content:'\201C';font-family:var(--serif);font-size:32px;line-height:1;color:var(--border2);position:absolute;top:2px;left:8px;pointer-events:none}
+.quote-text{font-family:var(--serif);font-size:11.5px;font-style:italic;color:var(--text3);line-height:1.6;padding-top:12px;margin:0;text-align:left}
+.quote-src{font-size:9.5px;color:var(--text4);margin-top:7px;font-family:var(--mono);letter-spacing:.3px}
+
+/* INSIGHT CARD */
+.insight-card{border-radius:5px;padding:11px 12px;margin-bottom:8px;overflow:hidden;border:1px solid var(--border)}
+.insight-card.blue{border-left:3px solid var(--accent);background:var(--accent-bg)}
+.insight-card.green{border-left:3px solid var(--green);background:var(--green-bg)}
+.insight-card.amber{border-left:3px solid var(--amber);background:var(--amber-bg)}
+.insight-card.red{border-left:3px solid var(--red);background:var(--red-bg)}
+.insight-label{font-size:8.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.insight-card.blue .insight-label{color:var(--accent)}
+.insight-card.green .insight-label{color:var(--green)}
+.insight-card.amber .insight-label{color:var(--amber)}
+.insight-card.red .insight-label{color:var(--red)}
+.insight-text{font-size:11.5px;color:var(--text2);line-height:1.6;margin:0;text-align:left}
+
+/* STAT MINI */
+.stat-mini{display:flex;align-items:baseline;gap:6px;padding:9px 12px;background:var(--bg);border:1px solid var(--border);border-radius:5px;margin-bottom:6px}
+.stat-mini-val{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--text);line-height:1;white-space:nowrap}
+.stat-mini-desc{font-size:10.5px;color:var(--text3);line-height:1.4}
+
+/* MAIN */
+.main{grid-column:2;grid-row:2;padding:0 56px 100px;min-width:0;width:100%}
 
 /* PAPER HEADER */
 .paper-header{padding:52px 0 40px;border-bottom:1px solid var(--border)}
@@ -186,11 +216,19 @@ tbody td:first-child{font-weight:500;color:var(--text)}
 .fn-item:last-child{border-bottom:none}
 .fn-key{font-family:var(--mono);font-size:10px;color:var(--text3);font-weight:500;white-space:nowrap;margin-top:2px}
 
-@media(max-width:900px){
-  body{grid-template-columns:1fr;grid-template-rows:48px auto 1fr}
+@media(max-width:1200px){
+  body{grid-template-columns:200px minmax(0,1fr) 200px}
+}
+@media(max-width:1000px){
+  body{grid-template-columns:200px minmax(0,1fr)}
+  .right-panel{display:none}
+  .main{padding:0 36px 80px}
+}
+@media(max-width:680px){
+  body{grid-template-columns:1fr}
   .sidebar{display:none}
-  .main{padding:0 24px 80px}
-  h1.paper-title{font-size:24px}
+  .main{padding:0 18px 60px}
+  h1.paper-title{font-size:22px}
   .two-col{column-count:1}
   .stats-row{grid-template-columns:1fr 1fr}
 }
@@ -259,7 +297,109 @@ tbody td:first-child{font-weight:500;color:var(--text)}
   </div>
 </nav>
 
-<!-- MAIN -->
+<!-- RIGHT PANEL -->
+<aside class="right-panel">
+
+  <div class="rp-section">
+    <span class="rp-label">Key Insights</span>
+
+    <div class="insight-card blue">
+      <div class="insight-label">Architecture</div>
+      <p class="insight-text">GPT-4's sparse MoE activates only ~440B of 1.2T parameters per token — intelligence decoupled from compute.</p>
+    </div>
+
+    <div class="insight-card amber">
+      <div class="insight-label">Scaling Law</div>
+      <p class="insight-text">Performance can be accurately forecast using just 1/10,000th of final training compute via power-law extrapolation.</p>
+    </div>
+
+    <div class="insight-card green">
+      <div class="insight-label">Alignment Gain</div>
+      <p class="insight-text">RLHF makes a small model equivalent in human preference to a non-RLHF model <strong>100× larger</strong> in parameter count.</p>
+    </div>
+
+    <div class="insight-card red">
+      <div class="insight-label">Contamination</div>
+      <p class="insight-text">82% of GSM8K math benchmark data appears in GPT-4's training set — inflating perceived mathematical ability.</p>
+    </div>
+  </div>
+
+  <div class="rp-divider"></div>
+
+  <div class="rp-section">
+    <span class="rp-label">Quotes</span>
+
+    <div class="quote-card">
+      <p class="quote-text">GPT-4 is an early, yet still incomplete, version of an AGI system — its intelligence is phenomenological, not mechanistic.</p>
+      <div class="quote-src">Bubeck et al., 2023</div>
+    </div>
+
+    <div class="quote-card">
+      <p class="quote-text">LLMs are shaped by the problem they are trained to solve. Their intelligence may be an uncanny ability to recombine, not reason.</p>
+      <div class="quote-src">McCoy et al., 2023</div>
+    </div>
+
+    <div class="quote-card">
+      <p class="quote-text">The jagged capability frontier: a model can outperform 99% of humans in logic while failing grade-school arithmetic.</p>
+      <div class="quote-src">Sparks of AGI, §II</div>
+    </div>
+  </div>
+
+  <div class="rp-divider"></div>
+
+  <div class="rp-section">
+    <span class="rp-label">Numbers</span>
+
+    <div class="stat-mini">
+      <span class="stat-mini-val">74%</span>
+      <span class="stat-mini-desc">ToT success rate vs. 4% with plain CoT</span>
+    </div>
+
+    <div class="stat-mini">
+      <span class="stat-mini-val">93%</span>
+      <span class="stat-mini-desc">Latent gold reasoning traces decodable from hidden states</span>
+    </div>
+
+    <div class="stat-mini">
+      <span class="stat-mini-val">69%</span>
+      <span class="stat-mini-desc">More likely to be convinced by logical fallacies</span>
+    </div>
+
+    <div class="stat-mini">
+      <span class="stat-mini-val">2027</span>
+      <span class="stat-mini-desc">Projected year for potential human-level AGI</span>
+    </div>
+  </div>
+
+  <div class="rp-divider"></div>
+
+  <div class="rp-section">
+    <span class="rp-label">AGI Levels</span>
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 8px;background:var(--green-bg);border:1px solid var(--border);border-radius:4px">
+        <span style="font-family:var(--mono);font-size:9px;color:var(--green);min-width:14px">L1</span>
+        <span style="font-size:11px;color:var(--text2)">Emerging <span style="color:var(--green);font-size:9.5px">← now</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 8px;background:var(--bg);border:1px solid var(--border);border-radius:4px">
+        <span style="font-family:var(--mono);font-size:9px;color:var(--text4);min-width:14px">L2</span>
+        <span style="font-size:11px;color:var(--text3)">Competent</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 8px;background:var(--bg);border:1px solid var(--border);border-radius:4px">
+        <span style="font-family:var(--mono);font-size:9px;color:var(--text4);min-width:14px">L3</span>
+        <span style="font-size:11px;color:var(--text3)">Expert</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 8px;background:var(--bg);border:1px solid var(--border);border-radius:4px">
+        <span style="font-family:var(--mono);font-size:9px;color:var(--text4);min-width:14px">L4</span>
+        <span style="font-size:11px;color:var(--text3)">Virtuoso</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;padding:6px 8px;background:var(--bg);border:1px solid var(--border);border-radius:4px">
+        <span style="font-family:var(--mono);font-size:9px;color:var(--text4);min-width:14px">L5</span>
+        <span style="font-size:11px;color:var(--text3)">Superhuman</span>
+      </div>
+    </div>
+  </div>
+
+</aside>
 <main class="main" id="main-content">
 
   <!-- HEADER -->
